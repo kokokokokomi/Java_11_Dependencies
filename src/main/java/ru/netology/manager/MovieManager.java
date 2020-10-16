@@ -1,14 +1,14 @@
 package ru.netology.manager;
 
-import ru.netology.domain.PurchaseItem;
+import ru.netology.domain.MovieItem;
 
-public class CartManager {
-    private PurchaseItem[] items = new PurchaseItem[0];
+public class MovieManager {
+    private MovieItem[] items = new MovieItem[0];
 
-    public void add(PurchaseItem item) {
+    public void add(MovieItem item) {
         // создаём новый массив размером на единицу больше
         int length = items.length + 1;
-        PurchaseItem[] tmp = new PurchaseItem[length];
+        MovieItem[] tmp = new MovieItem[length];
         // itar + tab
         // копируем поэлементно
         // for (int i = 0; i < items.length; i++) {
@@ -21,8 +21,8 @@ public class CartManager {
         items = tmp;
     }
 
-    public PurchaseItem[] getAll() {
-        PurchaseItem[] result = new PurchaseItem[items.length];
+    public MovieItem[] getAll() {
+        MovieItem[] result = new MovieItem[items.length];
         // перебираем массив в прямом порядке
         // но кладём в результаты в обратном
         for (int i = 0; i < result.length; i++) {
@@ -30,20 +30,5 @@ public class CartManager {
             result[i] = items[index];
         }
         return result;
-    }
-
-    // нативная реализация
-    public void removeById(int id) {
-        int length = items.length - 1;
-        PurchaseItem[] tmp = new PurchaseItem[length];
-        int index = 0;
-        for (PurchaseItem item : items) {
-            if (item.getId() != id) {
-                tmp[index] = item;
-                index++;
-            }
-        }
-        // меняем наши элементы
-        items = tmp;
     }
 }
