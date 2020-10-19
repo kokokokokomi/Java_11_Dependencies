@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class MovieItem {
+public class Afisha {
     private int id;
     private int productId;
     private String productName;
