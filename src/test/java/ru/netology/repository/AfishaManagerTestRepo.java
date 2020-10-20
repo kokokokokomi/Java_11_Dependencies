@@ -73,6 +73,19 @@ public class AfishaManagerTestRepo {
 
         assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldFindById() {
+        int idToFind = 1;
+        repository.save(first);
+        repository.save(second);
+        repository.save(third);
 
+        repository.findById(idToFind);
+
+        Afisha[] actual = repository.findById();
+        Afisha[] expected = new Afisha[]{first};
+
+        assertArrayEquals(expected, actual);
+    }
 
 }
