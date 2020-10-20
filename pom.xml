@@ -27,6 +27,12 @@
             <version>5.4.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.3.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,8 +42,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <includes>
+                        <include>AfishaManagerTestMock.java</include>
+                        <include>AfishaManagerTestRepo.java</include>
+                    </includes>
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
+
             </plugin>
 
             <plugin>
