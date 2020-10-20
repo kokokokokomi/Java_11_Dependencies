@@ -13,9 +13,7 @@ import lombok.NoArgsConstructor;
 public class AfishaRepository {
     private Afisha[] items = new Afisha[0];
 
-    public Afisha[] findAll() {
-        return items;
-    }
+    public Afisha[] findAll() { return items; }
 
     public void save(Afisha item) {
         int length = items.length + 1;
@@ -44,15 +42,13 @@ public class AfishaRepository {
         return tmp;
     }
 
-    public Afisha[] findById(int id) {
-        Afisha[] tmp = new Afisha[1]; // заглушка
-        int index = 0;
+    public Afisha findById(int id) {
         for (Afisha item : items) {
             if (item.getId() == id) {
-                tmp[index] = item;
+                return item;
             }
         }
-        return tmp;
+        return null;
     }
 
 }

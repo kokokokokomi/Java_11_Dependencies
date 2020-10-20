@@ -1,9 +1,9 @@
 package ru.netology.repository;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Afisha;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class AfishaManagerTestRepo {
     AfishaRepository repository = new AfishaRepository();
@@ -37,25 +37,28 @@ public class AfishaManagerTestRepo {
         repository.removeById(idToRemove);
 
         Afisha[] actual = repository.findAll();
-        Afisha[] expected = new Afisha[]{third, second};
+        Afisha[] expected = new Afisha[]{second, third};
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldFindById() {
-        int idToFind = 1;
+    public void shouldRemove2() {
+        int idToRemove = 8;
         repository.save(first);
         repository.save(second);
         repository.save(third);
+        repository.save(fourth);
+        repository.save(eighth);
 
-        repository.findById(idToFind);
+        repository.removeById(idToRemove);
 
-        Afisha[] actual = repository.findById(idToFind);
-        Afisha[] expected = new Afisha[]{first};
+        Afisha[] actual = repository.findAll();
+        Afisha[] expected = new Afisha[]{first, second, third, fourth};
 
         assertArrayEquals(expected, actual);
     }
+
 
     @Test
     public void shouldRemoveAll() {
@@ -71,20 +74,5 @@ public class AfishaManagerTestRepo {
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void shouldRemoveIfNotExist() {
-        int idToRemove = 8;
-        repository.save(first);
-        repository.save(second);
-        repository.save(third);
-        repository.save(fourth);
-
-        repository.removeById(idToRemove);
-
-        Afisha[] actual = repository.findAll();
-        Afisha[] expected = new Afisha[]{fourth, third, second, first};
-
-        assertArrayEquals(expected, actual);
-    }
 
 }

@@ -42,8 +42,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <includes>
+                        <include>AfishaManagerTestMock.java</include>
+                        <include>AfishaManagerTestRepo.java</include>
+                    </includes>
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
+
             </plugin>
 
             <plugin>
