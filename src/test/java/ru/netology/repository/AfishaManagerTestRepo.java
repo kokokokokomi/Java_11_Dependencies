@@ -1,6 +1,7 @@
 package ru.netology.repository;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Afisha;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -65,6 +66,9 @@ public class AfishaManagerTestRepo {
         repository.save(first);
         repository.save(second);
         repository.save(third);
+        third = null;
+        second = null;
+        first = null;
 
         repository.removeAll();
 
@@ -87,5 +91,4 @@ public class AfishaManagerTestRepo {
 
         assertArrayEquals(expected, actual);
     }
-
 }

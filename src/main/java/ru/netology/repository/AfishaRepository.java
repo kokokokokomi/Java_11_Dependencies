@@ -50,5 +50,4 @@ public class AfishaRepository {
         }
         return null;
     }
-
 }
