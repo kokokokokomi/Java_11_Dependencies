@@ -19,9 +19,9 @@ public class MovieManagerTest {
     MovieItem nineth = new MovieItem(9, 9, "Гадкий я","мультфильм");
     MovieItem tenth = new MovieItem(10, 10, "Перестрелка","боевик");
     MovieItem eleventh = new MovieItem(11, 11, "Мокито", "драма");
-    MovieItem twelveth = new MovieItem(12, 12, "Мокито 2", "драма");
+    MovieItem twelveth = new MovieItem(12, 12, "Мокито: Возвращение", "драма");
 
-    int lastMoviesToShow = 10;
+    MovieManager lastMoviesToShow = new MovieManager();
 
     @Test
     public void shouldAddMovie() {

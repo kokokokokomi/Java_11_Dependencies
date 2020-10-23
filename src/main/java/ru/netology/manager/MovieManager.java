@@ -5,9 +5,15 @@ import ru.netology.domain.MovieItem;
 public class MovieManager {
     private MovieItem[] items = new MovieItem[0];
 
-    private int lastMoviesToShow;
-    public int getLastMoviesToShow() { return lastMoviesToShow; }
-    public void setLastMoviesToShow(int lastMoviesToShow) { this.lastMoviesToShow = lastMoviesToShow; }
+    private int lastMoviesToShow = 10;
+
+    public int getLastMoviesToShow() {
+        return lastMoviesToShow;
+    }
+
+    public void setLastMoviesToShow(int lastMoviesToShow) {
+        this.lastMoviesToShow = lastMoviesToShow;
+    }
 
     public void add(MovieItem item) {
         // создаём новый массив размером на единицу больше
@@ -42,6 +48,13 @@ public class MovieManager {
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
+        }
+        MovieItem[] tmp = result - lastMoviesToShow;
+        if (result < lastMoviesToShow) {
+            return result;
+        }
+        if (result >= lastMoviesToShow) {
+            return lastMoviesToShow;
         }
         return result;
     }
