@@ -38,8 +38,8 @@ public class AfishaRepository {
     }
 
     public Afisha[] removeAll() {
-        Afisha[] tmp = new Afisha[0];
-        return tmp;
+        items = new Afisha[0];
+        return items;
     }
 
     public Afisha findById(int id) {

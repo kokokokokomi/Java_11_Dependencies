@@ -1,7 +1,6 @@
 package ru.netology.repository;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Afisha;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -34,12 +33,9 @@ public class AfishaManagerTestRepo {
         repository.save(first);
         repository.save(second);
         repository.save(third);
-
         repository.removeById(idToRemove);
-
         Afisha[] actual = repository.findAll();
         Afisha[] expected = new Afisha[]{second, third};
-
         assertArrayEquals(expected, actual);
     }
 
@@ -51,44 +47,32 @@ public class AfishaManagerTestRepo {
         repository.save(third);
         repository.save(fourth);
         repository.save(eighth);
-
         repository.removeById(idToRemove);
-
         Afisha[] actual = repository.findAll();
         Afisha[] expected = new Afisha[]{first, second, third, fourth};
-
         assertArrayEquals(expected, actual);
     }
-
 
     @Test
     public void shouldRemoveAll() {
         repository.save(first);
         repository.save(second);
         repository.save(third);
-        third = null;
-        second = null;
-        first = null;
-
         repository.removeAll();
-
-        Afisha[] actual = repository.removeAll();
-        Afisha[] expected = new Afisha[]{};
-
+        Afisha[] actual = new Afisha[]{};
+        Afisha[] expected = repository.removeAll();
         assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldFindById() {
-        int idToFind = 1;
+        //int idToFind = 1;
         repository.save(first);
         repository.save(second);
         repository.save(third);
-
-        repository.findById(idToFind);
-
-        Afisha[] actual = repository.findById();
-        Afisha[] expected = new Afisha[]{first};
-
-        assertArrayEquals(expected, actual);
+        repository.findById(1);
+        Afisha[] actual = new Afisha[]{first};
+        Afisha[] expected = repository.findById();
+        assertArrayEquals(actual, expected);
     }
 }
