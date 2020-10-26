@@ -26,13 +26,13 @@ public class MovieManagerTest {
     @Test
     public void shouldAddMovie() {
         manager.add(fifth);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{fifth};
+        MovieItem[] actual = new MovieItem[]{fifth};
+        MovieItem[] expected = manager.getLastMovies();
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldShowLastAdded() {
+    public void shouldShowLastTenAdded() {
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -43,45 +43,8 @@ public class MovieManagerTest {
         manager.add(eighth);
         manager.add(nineth);
         manager.add(tenth);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{tenth, nineth, eighth, seventh, sixth, fifth, fourth, third, second, first};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldShowLastAdded2() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-        manager.add(fifth);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{fifth, fourth, third, second, first};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldShowLastAdded3() {
-        manager.add(first);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{first};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldShowLastAdded4() {
-        manager.add(tenth);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{tenth};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldShowLastAdded5() {
-        manager.add(tenth);
-        manager.add(first);
-        MovieItem[] actual = manager.getAll();
-        MovieItem[] expected = new MovieItem[]{first, tenth};
+        MovieItem[] actual = new MovieItem[]{tenth, nineth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        MovieItem[] expected = manager.getLastMovies();
         assertArrayEquals(expected, actual);
     }
 
@@ -97,8 +60,74 @@ public class MovieManagerTest {
         manager.add(eighth);
         manager.add(nineth);
         manager.add(tenth);
-        MovieItem[] actual = manager.getNotAll();
-        MovieItem[] expected = new MovieItem[]{tenth, nineth, eighth, seventh, sixth};
+        manager.setLastMoviesToShow(5);
+        MovieItem[] actual = new MovieItem[]{tenth, nineth, eighth, seventh, sixth};
+        MovieItem[] expected = manager.getLastMovies();
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldShowLastTwoOfFiveAdded() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.setLastMoviesToShow(2);
+        MovieItem[] actual = new MovieItem[]{fifth, fourth};
+        MovieItem[] expected = manager.getLastMovies();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldShowAllLastAddedNotTen() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        MovieItem[] actual = new MovieItem[]{fifth, fourth, third, second, first};
+        MovieItem[] expected = manager.getLastMovies();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldShowLastAddedMoreThanTen() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(nineth);
+        manager.add(tenth);
+        manager.add(eleventh);
+        manager.add(twelveth);
+        MovieItem[] actual = new MovieItem[]{twelveth, eleventh, tenth, nineth, eighth, seventh, sixth, fifth, fourth, third};
+        MovieItem[] expected = manager.getLastMovies();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldShowLastAddedMoreThanTen2() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(nineth);
+        manager.add(tenth);
+        manager.add(eleventh);
+        manager.add(twelveth);
+        manager.setLastMoviesToShow(2);
+        MovieItem[] actual = new MovieItem[]{twelveth, eleventh};
+        MovieItem[] expected = manager.getLastMovies();
+        assertArrayEquals(expected, actual);
+    }
+
 }

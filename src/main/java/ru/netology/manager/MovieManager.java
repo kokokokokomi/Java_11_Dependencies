@@ -31,30 +31,12 @@ public class MovieManager {
         items = tmp;
     }
 
-    public MovieItem[] getAll() {
-        MovieItem[] result = new MovieItem[items.length];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратном
-        for (int i = 0; i < result.length; i++) {
+    public MovieItem[] getLastMovies() {
+        int count = items.length > lastMoviesToShow ? lastMoviesToShow : items.length;
+        MovieItem[] result = new MovieItem[count];
+        for (int i = 0; i < count; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
-        }
-        return result;
-    }
-
-    public MovieItem[] getNotAll() {
-        MovieItem[] result = new MovieItem[items.length];
-        int lastMoviesToShow;
-        for (int i = 0; i < result.length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
-        }
-        MovieItem[] tmp = result - lastMoviesToShow;
-        if (result < lastMoviesToShow) {
-            return result;
-        }
-        if (result >= lastMoviesToShow) {
-            return lastMoviesToShow;
         }
         return result;
     }
