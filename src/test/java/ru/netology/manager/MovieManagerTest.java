@@ -21,8 +21,6 @@ public class MovieManagerTest {
     MovieItem eleventh = new MovieItem(11, 11, "Мокито", "драма");
     MovieItem twelveth = new MovieItem(12, 12, "Мокито: Возвращение", "драма");
 
-    MovieManager lastMoviesToShow = new MovieManager();
-
     @Test
     public void shouldAddMovie() {
         manager.add(fifth);
